@@ -25,8 +25,10 @@ class Herding:
     #Sets the number of times the algorithm evaluates the herd    
     def setIterations(self,times):
         self.iterations = times
-    
-
+        
+    def sortHerd(self):
+        self.sort_Herd = sorted(self.herd)
+         
     
 class agent:
     def __init__(self,index):
