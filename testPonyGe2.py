@@ -5,8 +5,7 @@ Created on Sun Nov  3 15:27:35 2019
 @author: Joe
 """
 
-from ponyge2.src.algorithm.parameters import params,set_params
-from ponyge2.src.stats.stats import get_stats
+import
 
 
 import sys

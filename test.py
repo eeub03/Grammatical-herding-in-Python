@@ -10,7 +10,6 @@ class Herding:
     def __init__(self,size):
         self.herd = {}
         self.sort_Herd = ()
-        self.betas_Array ={}
         self.iterations = 1
         self.average_Fitness = 0.0
         self.best_Position
