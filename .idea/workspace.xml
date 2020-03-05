@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a3a57024-44e0-4683-9d02-87c6465a472a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Production_Rules.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parameters/initialiseHerd.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GHMain.py" beforeDir="false" afterPath="$PROJECT_DIR$/GHMain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HerdMemberCreation.py" beforeDir="false" afterPath="$PROJECT_DIR$/HerdMemberCreation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Phenotype.py" beforeDir="false" afterPath="$PROJECT_DIR$/Phenotype.py" afterDir="false" />
-    </list>
+    <list default="true" id="a3a57024-44e0-4683-9d02-87c6465a472a" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583332175400</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add Production rules py #for the sake of showing production rules generated from integers.&#10;Added more reporters and testers and file passing to initialisation method">
+      <created>1583410546218</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1583410546218</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -231,7 +231,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <MESSAGE value="Added Class files.&#10;Genotype generation added.&#10;Genotype to Phenotype Added.&#10;Grammar File made but empty." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Class files.&#10;Genotype generation added.&#10;Genotype to Phenotype Added.&#10;Grammar File made but empty." />
+    <MESSAGE value="Add Production rules py #for the sake of showing production rules generated from integers.&#10;Added more reporters and testers and file passing to initialisation method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Production rules py #for the sake of showing production rules generated from integers.&#10;Added more reporters and testers and file passing to initialisation method" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
