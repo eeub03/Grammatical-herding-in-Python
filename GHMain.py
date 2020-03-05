@@ -37,16 +37,19 @@ def initialiseHerdFile(filePath):
     parameters = [0]*6
     print(os.getcwd())
     try:
-        f = open(filePath)
-        for i in range(0, 5):
-            line = f.readline(i)
-            print("line = " + line + "\n")
-            parameters[i] = ''.join(line.partition("#"))
-            print("p[i] = " + parameters[i])
-            if i < 5:
-                p = parameters[i]
-                parameters[i] = int(p)
-        print(parameters)
+        with open(filePath) as f:
+
+            for i, line in enumerate(f):
+                str = ''.join(line)
+
+                str = ''.join(str)
+                str = str.partition("#")
+                parameters[i] = str
+                if i < 5:
+                    print(parameters[i])
+                    parameters[i] = int(parameters[i])
+
+            print(parameters)
         initialiseHerd(parameters[0], parameters[1], parameters[2], parameters[3], parameters[4], parameters[5])
     except IOError:
         print("The file at " + filePath + " Could not be opened, IOError.")
@@ -81,7 +84,8 @@ def getSize():
     return herd_Size
 
 
-initialiseHerdFile('parameters\\initialiseHerd.txt')
+initialiseHerd(1, 1, 20, 20, 8, "SFT.BNF")
 
-print(herd[0].bitString)
+print(herd[0].codon)
 print(herd[0].phenotype)
+print(herd[0].getProduction())

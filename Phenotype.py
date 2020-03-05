@@ -15,7 +15,7 @@ def createPhenotype(self, genotype, codon_Size, no_Of_Codons):
 
     for i in range(len(genotype)):
         for j in range(len(binary2DecBits)):
-            print("runnin")
+
 
             # Here we convert the Bistring to integers, splitting it based on the codon size.
             phenotype[i] = (phenotype[i] + (genotype[i][j] * binary2DecBits[j]))

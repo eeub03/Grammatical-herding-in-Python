@@ -1,5 +1,6 @@
 import numpy as np
 import Phenotype as ph
+import Production_Rules as PR
 class HerdMember:
     def __init__(self, index, codon_Min, codon_Max, codon_Size, BNF_Path):
         self.index = index  # Unique Identifier for herd members
@@ -18,7 +19,7 @@ class HerdMember:
             minMaxCodon = np.random.randint(codon_Min+2, codon_Max+2)
         else:
             minMaxCodon = np.random.randint(codon_Max+2)
-        print("mmCodon: " + str(minMaxCodon))
+        print("minMaxCodon: " + str(minMaxCodon))
         self.codon = []
         for i in range(minMaxCodon):
             self.codon.append(np.random.randint(0,2, size=(codon_Size)))
@@ -27,3 +28,7 @@ class HerdMember:
 
     def getFitness(self):
         return self.fitness
+    def getProduction(self):
+        return PR.mapping(self.phenotype)
+
+
