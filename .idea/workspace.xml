@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a3a57024-44e0-4683-9d02-87c6465a472a" name="Default Changelist" comment="" />
+    <list default="true" id="a3a57024-44e0-4683-9d02-87c6465a472a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/PGEGrammar/Grammar.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PGEGrammar/tree.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fitness/base_ff.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fitness/string_match.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parameters/parameters.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GHMain.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Herd_Individual.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Mapper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ReadGrammarFile.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/grammars/letter.bnf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GHMain.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Grammar.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HerdMemberCreation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Phenotype.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Production_Rules.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Production_Rules.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/PGEGrammar/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parameters/initialiseHerd.txt" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,21 +41,23 @@
   </component>
   <component name="ProjectId" id="1T6zWrt7b67Ivuu8LUS9QUDaX8B" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/fitness" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\parameters" />
-      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code" />
-      <recent name="C:\Users\Joe\AppData\Local\Programs\Python\Python37-32\Lib\site-packages" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\fitness" />
       <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code" />
       <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\ponyge" />
       <recent name="C:\Users\Joe\AppData\Local\Programs\Python\Python37-32\Lib\site-packages" />
       <recent name="C:\Users\Joe\AppData\Local\Programs\Python\Python37-32\Lib\site-packages\pytz" />
-      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\ponyge2" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\src\grammars" />
+      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\src" />
+      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\parameters" />
+      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code" />
+      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\src\GHP" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -50,7 +72,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.GHMain">
+  <component name="RunManager" selected="Python.Mapper">
+    <configuration name="GHMain (1)" type="PythonConfigurationType" factoryName="Python">
+      <module name="code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/GHMain.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="GHMain" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="code" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -63,7 +106,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GHMain.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\src\GHMain.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -72,7 +115,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="ponyge (3)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Herd_Individual" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="code" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -80,11 +123,32 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ponyge-0.1.5/src" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ponyge-0.1.5/src/ponyge.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/Herd_Individual.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Mapper" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/Mapper.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -135,41 +199,21 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="testPonyGe2" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="code" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\Joe\AppData\Local\Programs\Python\Python37-32\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testPonyGe2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
-      <item itemvalue="Python.testPonyGe2" />
-      <item itemvalue="Python.ponyge (3)" />
+      <item itemvalue="Python.GHMain (1)" />
       <item itemvalue="Python.test" />
       <item itemvalue="Python.GHMain" />
       <item itemvalue="Python.setup" />
+      <item itemvalue="Python.Herd_Individual" />
+      <item itemvalue="Python.Mapper" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Mapper" />
+        <item itemvalue="Python.Herd_Individual" />
         <item itemvalue="Python.GHMain" />
         <item itemvalue="Python.setup" />
         <item itemvalue="Python.test" />
-        <item itemvalue="Python.ponyge (3)" />
-        <item itemvalue="Python.testPonyGe2" />
       </list>
     </recent_temporary>
   </component>
@@ -236,13 +280,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$USER_HOME$/Desktop/PonyGE2-master/src/algorithm/parameters.py</url>
-          <line>12</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">

@@ -1,6 +1,0 @@
-4# Herd size
-1# Iterations
-20# Min_Codon min number of codons
-20# Max_Codon max number of codons
-8# Size_Codon size of codon
-SFT.BNF
