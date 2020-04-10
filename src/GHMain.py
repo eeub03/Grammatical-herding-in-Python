@@ -41,5 +41,7 @@ class Herd:
 
 Herd1 = Herd()
 Herd1.evaluateHerd()
+print(Herd1.best_fitness)
+print(Herd1.average_Fitness)
 for i in range(Herd1.herd_Size):
     print(Herd1.herd[i].phenotype)

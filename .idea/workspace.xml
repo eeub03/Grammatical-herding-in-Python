@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a3a57024-44e0-4683-9d02-87c6465a472a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/fitness/evaluation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GHMain.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/GHMain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Herd/Herd_Individual.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Herd/Herd_Individual.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fitness/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fitness/evaluation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/parameters/parameters.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/parameters/parameters.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />

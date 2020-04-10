@@ -13,7 +13,8 @@ def evaluate_herd(individuals):
     """
     total_fitness = 0
     betas = [] * len(individuals)
-    fitness_herd = [[]] * len(individuals)
+    fitness_herd = [[0,0]] * len(individuals)
+
     for i in range(len(individuals)):
         ind = individuals[i]
         if ind.invalid:
@@ -21,14 +22,13 @@ def evaluate_herd(individuals):
         else:
             total_fitness += ind.fitness
             # Stores the index from Individuals for this herd member
-            fitness_herd[i].append(i)
+            fitness_herd[i] = [i, ind.fitness]
             # Stores the fitness of the herd member
-            fitness_herd[i].append(ind.fitness)
 
-    average_fitness = np.average(total_fitness)
+    print(fitness_herd)
+    average_fitness = (total_fitness / (len(individuals) - stats['number_of_invalids']))
 
     sorted_herd = sorted(fitness_herd, key=lambda x:-x[1])
-
 
     if params['NUMBER_OF_ALPHAS'] >= params['NUMBER_OF_BETAS']:
         raise Exception('ERROR: Number of Alphas cannot be higher or equal to the number of Betas')
@@ -38,6 +38,7 @@ def evaluate_herd(individuals):
             params['NUMBER_OF_BETAS'] = params['HERD_SIZE']
         # Sets the individuals with the best fitness to Betas and Alphas
         for i in range(params['NUMBER_OF_BETAS']):
+            # Adds the herd member to the list
             betas.append(individuals[sorted_herd[i][0]])
             if i < params['NUMBER_OF_ALPHAS']:
                 herd_index = sorted_herd[i][0]

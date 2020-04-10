@@ -1,13 +1,13 @@
 from PGEGrammar.grammar import Grammar
 from socket import gethostname
-from multiprocessing import cpu_count
+
 
 hostname = gethostname().split('.')
 machine_name = hostname[0]
 import os
 params = {
 
-    'HERD_SIZE': 10, # Herd size
+    'HERD_SIZE': 40, # Herd size
     'ITERATIONS' : 1, # Iterations/generations
     'HILL_CLIMBING_HISTORY' : 500, # Hill climbing history
     'SCHC_COUNT_METHOD': "count_all", # SCHC Counting method
@@ -18,10 +18,6 @@ params = {
     'CODON_MAX' : 500, # Max_Codon max number of codons
     'CODON_SIZE' : 1000, # Size_Codon size of codon
 
-    #
-    'MULTICORE': True,
-    # Set the number of cpus to be used for multiprocessing
-    'CORES': cpu_count(),
 
 
     'GRAMMAR_FILE' : "grammars/letter.bnf", #BNF File path
@@ -41,8 +37,8 @@ params = {
     'PERMUTATION_RAMPS': 5,
 
     # GRAMMATICAL HERDING PARAMETERS
-    'NUMBER_OF_BETAS' : 40,
-    'NUMBER_OF_ALPHAS' : 10
+    'NUMBER_OF_BETAS' : 10,
+    'NUMBER_OF_ALPHAS' : 2
 }
 def grammarFileInit():
     params['BNF'] = Grammar(os.path.join(params['GRAMMAR_FILE']))
