@@ -1,5 +1,4 @@
 
-src/fitness/evaluation.py
 src/fitness/string_match.py
 src/grammars/SFT.BNF
 

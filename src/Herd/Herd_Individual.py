@@ -52,7 +52,7 @@ class HerdMember:
         fitness_class = getattr(module, params['FITNESS_FUNCTION'])
         fitness_Object = fitness_class()
         if self.invalid:
-            fitness = None
+            fitness = 0
         else:
             fitness = fitness_Object.evaluate(self)
         return fitness

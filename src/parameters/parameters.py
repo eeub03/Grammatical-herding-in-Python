@@ -7,7 +7,7 @@ machine_name = hostname[0]
 import os
 params = {
 
-    'HERD_SIZE': 200, # Herd size
+    'HERD_SIZE': 10, # Herd size
     'ITERATIONS' : 1, # Iterations/generations
     'HILL_CLIMBING_HISTORY' : 500, # Hill climbing history
     'SCHC_COUNT_METHOD': "count_all", # SCHC Counting method

@@ -19,9 +19,7 @@ class Herd:
     def __init__(self):
         self.herd = []
 
-        self.betas = []
         self.iterations = 1
-        self.average_Fitness = 0.0
         self.herd_Size = params['HERD_SIZE']
         self.BNF_Path = ""
         self.herd_Fitness = []
@@ -35,10 +33,13 @@ class Herd:
         for i in range(0, self.herd_Size):
             # Sets our grammar file from the file path of the bnf
             self.herd.append(Herd_Individual.HerdMember(i))
-        self.herd_evaluated = evaluate_herd(self.herd)
 
-
+    def evaluateHerd(self):
+        self.herd_evaluated, self.average_Fitness, self.betas, self.best_fitness, self.best_member \
+            = evaluate_herd(self.herd)
+        self.best_phenotype = self.best_member.phenotype
 
 Herd1 = Herd()
+Herd1.evaluateHerd()
 for i in range(Herd1.herd_Size):
     print(Herd1.herd[i].phenotype)
