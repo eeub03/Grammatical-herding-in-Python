@@ -1,20 +1,15 @@
 from PGEGrammar import tree as tr
-import src.Production_Rules as pr
-from parameters import parameters as par
+from src.parameters.parameters import params
+from src.mapping import Production_Rules as pr
 import numpy as np
 
 
-def mapper(tree, herd_member):
-    assert (tree or herd_member)
-    assert not (tree and herd_member)
+def mapper(herd_member):
     if herd_member:
         genotype = herd_member.bitString
-        tree, genotype,  nodes, invalid, depth, used_codons = map_tree_from_member(genotype)
+        tree, genotype,  nodes, invalid, depth, used_codons = map_tree_from_member(genotype, herd_member)
     else:
-        output, invalid, depth, \
-        nodes = tree.get_tree_info(par.params['GRAMMAR_FILE'].non_terminals.keys(),
-                                   [], [])
-        used_codons = len(herd_member.bitstring)
+        print("invalid")
 
     if invalid:
         # Set values for invalid individuals.
@@ -22,10 +17,10 @@ def mapper(tree, herd_member):
 
     return tree, nodes, invalid, depth, used_codons
 
-def convertBitstringToInteger(self, genotype,no_Of_Codons):
+def convertBitstringToInteger(genotype,herd_member):
     """
     :param genotype: Bitstring of the herd member
-    :param no_Of_Codons: The number of codons, used for the size of the phenotype
+    :param herd_member: Used to get the herd members number of codons, used for the size of the phenotype
     """
     """What this does is generate our integer conversion based on our codon size. The size of the codon
         determines how many bits are in the bitstring. Converting to Denary is based on powers of 2 in binary
@@ -34,33 +29,27 @@ def convertBitstringToInteger(self, genotype,no_Of_Codons):
         Therefore to convert, we use a two for loops, one for the length of our Bitstring and another for the
         size of codon. Allowing us to go through the codons bit by bit and convert it denary
     """
-    phenotype = [0]* no_Of_Codons
-    binary2DecBits = []
-    last = 0.5
-    for k in range(par.params['CODON_SIZE']):
+    phenotype = [] * (herd_member.no_of_Codons)
 
-        currentBit = 2 * last  # This is the current bit so our first one would be 1.
-        binary2DecBits.append(currentBit)  # Adds the bit to the conversion array
-        last = currentBit  # Sets the currentBit to last bit for next iteration
-    # Here we convert our bitString to integers based on codon size. Because of our last for loop, "binary2DecBits"
-    # Is the same size as our codon size.
+    genotype_list = [str(x) for x in genotype]
 
-    for i in range(len(genotype)):
-        for j in range(len(binary2DecBits)):
+    for i in range(herd_member.no_of_Codons):
+        current_codon = i * params['CODON_SIZE']
 
+        gl = genotype_list[current_codon: (current_codon + params['CODON_SIZE'])]
+        gs = ""
+        genotype_string = gs.join(gl)
 
-            # Here we convert the Bistring to integers, splitting it based on the codon size.
-            phenotype[i] = (phenotype[i] + (genotype[i][j] * binary2DecBits[j]))
+        phenotype.append(int(genotype_string,2))
 
-    print("Returning phenotype")
     return phenotype
 
 
-def map_tree_from_member(genotype):
+def map_tree_from_member(genotype,herd_member):
     # Initialise an instance of the tree class
 
-    tree1 = tr(par.params['BNF'].start_rule["symbol"], None)
-    genotype_int = convertBitstringToInteger(genotype, par.params['NO_OF_CODONS'])
+    tree1 = tr.Tree(params['BNF'].start_rule["symbol"], None)
+    genotype_int = convertBitstringToInteger(genotype, herd_member)
 
     # Map tree from the given genome
     output, used_codons, nodes, depth, max_depth, invalid = \
@@ -69,12 +58,9 @@ def map_tree_from_member(genotype):
     phenotype = "".join(output)
 
     if invalid:
-
-        return tree1, genotype, nodes, invalid, max_depth, \
-               used_codons
+        return None, genotype_int, nodes, invalid, max_depth, used_codons
     else:
-        return tree1, genotype, nodes, invalid, max_depth, \
-            used_codons
+        return phenotype, genotype_int, nodes, invalid, max_depth, used_codons
 
 def map_tree(tree, genotype, genotype_int, phenotype_output, index, depth, max_depth, nodes, invalid=False):
     """
@@ -99,12 +85,14 @@ def map_tree(tree, genotype, genotype_int, phenotype_output, index, depth, max_d
     function
     """
 
-    if not invalid and index < len(genotype) * (par.params['MAX_WRAPS'] + 1):
+
+    if not invalid and index < len(genotype_int) * (params['MAX_WRAPS'] + 1):
         # If the solution is not invalid thus far, and if we still have
         # remaining codons in the genome, then we can continue to map the tree.
 
-        if par.params['MAX_TREE_DEPTH'] and (max_depth > par.params['MAX_TREE_DEPTH']):
+        if params['MAX_TREE_DEPTH'] and (max_depth > params['MAX_TREE_DEPTH']):
             # We have breached our maximum tree depth limit.
+            print("Max breached")
             invalid = True
 
         # Increment and set number of nodes and current depth.
@@ -114,16 +102,17 @@ def map_tree(tree, genotype, genotype_int, phenotype_output, index, depth, max_d
 
         # Shows the different production choices and also how many of these choices there are that can
         # currently be made
-        production_choices = par.params['BNF'].rules[tree.root]['choices']
+        production_choices = params['BNF'].rules[tree.root]['choices']
 
-        no_choices = par.params['BNF'].rules[tree.root]['no_choices']
+        no_choices = params['BNF'].rules[tree.root]['no_choices']
 
         # Sets our codon tree value
         tree.codon = genotype_int[index % len(genotype_int)]
 
         # Here we use my production rule function instead of PONYGE's to get the production rule
         selection = pr.mapping(genotype_int, no_choices)
-        chosen_prod_rule = production_choices[selection[index]]
+        prod_index = selection[index]
+        chosen_prod_rule = production_choices[prod_index]
 
         index += 1
 
@@ -135,16 +124,16 @@ def map_tree(tree, genotype, genotype_int, phenotype_output, index, depth, max_d
             if symbol["type"] == "T":
                 # Append the child to the parent node. Child is a terminal, do
                 # not recurse.
-                tree.children.append(tr(symbol["symbol"], tree))
-                output.append(symbol["symbol"])
+                tree.children.append(tr.Tree(symbol["symbol"], tree))
+                phenotype_output.append(symbol["symbol"])
 
             elif symbol["type"] == "NT":
                 # Append the child to the parent node.
-                tree.children.append(tr(symbol["symbol"], tree))
+                tree.children.append(tr.Tree(symbol["symbol"], tree))
 
                 # Recurse by calling the function again to map the next
                 # non-terminal from the genome.
-                output, index, nodes, d, max_depth, invalid = \
+                phenotype_output, index, nodes, d, max_depth, invalid = \
                     map_tree(tree.children[-1], genotype, genotype_int,phenotype_output,
                                     index, depth, max_depth, nodes,
                                     invalid=invalid)
@@ -152,11 +141,12 @@ def map_tree(tree, genotype, genotype_int, phenotype_output, index, depth, max_d
 
     else:
         # Mapping incomplete, solution is invalid.
+
         return phenotype_output, index, nodes, depth, max_depth, True
 
     # Find all non-terminals in the chosen production choice.
     NT_kids = [kid for kid in tree.children if kid.root in
-               par.params['BNF'].non_terminals]
+               params['BNF'].non_terminals]
 
     if not NT_kids:
         # There are no non-terminals in the chosen production choice, the
@@ -171,8 +161,8 @@ def map_tree(tree, genotype, genotype_int, phenotype_output, index, depth, max_d
             # Set the new maximum depth.
             max_depth = depth
 
-        if par.params['MAX_TREE_DEPTH'] and (max_depth > par.params['MAX_TREE_DEPTH']):
+        if params['MAX_TREE_DEPTH'] and (max_depth > params['MAX_TREE_DEPTH']):
             # If our maximum depth exceeds the limit, the solution is invalid.
             invalid = True
 
-    return output, index, nodes, depth, max_depth, invalid
+    return phenotype_output, index, nodes, depth, max_depth, invalid

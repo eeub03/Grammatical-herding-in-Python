@@ -2,6 +2,9 @@ import numpy as np
 
 np.seterr(all="raise")
 
+"""
+CODE IS NOT MINE, MADE BY PONYGE2 TEAM
+"""
 
 class base_ff:
     """

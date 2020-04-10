@@ -1,10 +1,12 @@
 from re import finditer, DOTALL, MULTILINE, match
-from parameters import parameters as par
+from src.parameters import parameters as par
 from sys import maxsize
 import math
 """
 PLEASE NOTE THE CODE IS AN EDITED VERSION OF PONYGE2's 'grammar.py' FILE I DID NOT WRITE THIS CODE
-IT HAS BEEN MODIFIED FOR USE IN MY LIBRARY
+IT HAS BEEN MODIFIED FOR USE IN MY LIBRARY. 
+Code that has been edited was minor so has not been pointed out.
+
 """
 class Grammar(object):
     """

@@ -2,25 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a3a57024-44e0-4683-9d02-87c6465a472a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/PGEGrammar/Grammar.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PGEGrammar/tree.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fitness/base_ff.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fitness/string_match.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parameters/parameters.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GHMain.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Herd_Individual.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Mapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ReadGrammarFile.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/grammars/letter.bnf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Herd/Herd_Individual.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fitness/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mapping/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/parameters/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stats/statistics.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GHMain.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Grammar.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HerdMemberCreation.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Phenotype.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Production_Rules.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Production_Rules.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/PGEGrammar/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parameters/initialiseHerd.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PGEGrammar/Grammar.py" beforeDir="false" afterPath="$PROJECT_DIR$/PGEGrammar/Grammar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PGEGrammar/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/PGEGrammar/tree.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SFT.BNF" beforeDir="false" afterPath="$PROJECT_DIR$/src/Herd/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fitness/base_ff.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fitness/base_ff.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fitness/string_match.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parameters/parameters.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/parameters/parameters.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GHMain.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/GHMain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Herd_Individual.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapping/Mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Production_Rules.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapping/Production_Rules.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ReadGrammarFile.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,6 +39,7 @@
   </component>
   <component name="ProjectId" id="1T6zWrt7b67Ivuu8LUS9QUDaX8B" />
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/fitness" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
@@ -53,11 +52,11 @@
       <recent name="C:\Users\Joe\AppData\Local\Programs\Python\Python37-32\Lib\site-packages\pytz" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\src\grammars" />
       <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\src" />
-      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\parameters" />
-      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code" />
-      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\src\GHP" />
+      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\src\mapping" />
+      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\src\Herd" />
+      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\src\grammars" />
+      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\fitness" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -72,7 +71,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Mapper">
+  <component name="RunManager" selected="Python.GHMain (1)">
     <configuration name="GHMain (1)" type="PythonConfigurationType" factoryName="Python">
       <module name="code" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -127,7 +126,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/Herd_Individual.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\src\Herd\Herd_Individual.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -148,7 +147,28 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/Mapper.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\src\mapping\Mapper.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="parameters" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/parameters" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/parameters/parameters.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -178,42 +198,21 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="code" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Python.GHMain (1)" />
-      <item itemvalue="Python.test" />
       <item itemvalue="Python.GHMain" />
       <item itemvalue="Python.setup" />
       <item itemvalue="Python.Herd_Individual" />
       <item itemvalue="Python.Mapper" />
+      <item itemvalue="Python.parameters" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Mapper" />
+        <item itemvalue="Python.parameters" />
         <item itemvalue="Python.Herd_Individual" />
+        <item itemvalue="Python.Mapper" />
         <item itemvalue="Python.GHMain" />
         <item itemvalue="Python.setup" />
-        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
@@ -256,7 +255,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583410546218</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added grammar file and tree mapping from individuals from PONYGE2">
+      <created>1585920387979</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1585920387979</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -276,7 +282,8 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <MESSAGE value="Added Class files.&#10;Genotype generation added.&#10;Genotype to Phenotype Added.&#10;Grammar File made but empty." />
     <MESSAGE value="Add Production rules py #for the sake of showing production rules generated from integers.&#10;Added more reporters and testers and file passing to initialisation method" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Production rules py #for the sake of showing production rules generated from integers.&#10;Added more reporters and testers and file passing to initialisation method" />
+    <MESSAGE value="Added grammar file and tree mapping from individuals from PONYGE2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added grammar file and tree mapping from individuals from PONYGE2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
