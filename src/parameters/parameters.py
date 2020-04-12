@@ -7,23 +7,21 @@ machine_name = hostname[0]
 import os
 params = {
 
-    'HERD_SIZE': 40, # Herd size
+    'HERD_SIZE': 700, # Herd size
     'ITERATIONS' : 1, # Iterations/generations
-    'HILL_CLIMBING_HISTORY' : 500, # Hill climbing history
-    'SCHC_COUNT_METHOD': "count_all", # SCHC Counting method
-    'ITERATIONS' : 1,# Number of runs
+    # GRAMMATICAL HERDING PARAMETERS
+    'NUMBER_OF_BETAS': 40,
+    'NUMBER_OF_ALPHAS': 10,
 
+    'NUMBER_OF_CODONS' : 30,
+    'CODON_SIZE' : 4, # The size of the codon.
 
-    'CODON_MIN' : 1, # Min_Codon min number of codons
-    'CODON_MAX' : 500, # Max_Codon max number of codons
-    'CODON_SIZE' : 1000, # Size_Codon size of codon
-
-
+    'TARGET_FITNESS' : 100,
 
     'GRAMMAR_FILE' : "grammars/letter.bnf", #BNF File path
 
-    'MAX_TREE_DEPTH' : 17,
-    'MAX_WRAPS' : 0,
+    'MAX_TREE_DEPTH' : 6,
+    'MAX_WRAPS' : 10,
 
     'SEED_INVIDIUALS' : [],
     # Fitness_function
@@ -36,9 +34,7 @@ params = {
     'MIN_INIT_TREE_DEPTH': None,
     'PERMUTATION_RAMPS': 5,
 
-    # GRAMMATICAL HERDING PARAMETERS
-    'NUMBER_OF_BETAS' : 10,
-    'NUMBER_OF_ALPHAS' : 2
+
 }
 def grammarFileInit():
     params['BNF'] = Grammar(os.path.join(params['GRAMMAR_FILE']))
