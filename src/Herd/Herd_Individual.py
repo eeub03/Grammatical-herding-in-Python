@@ -2,7 +2,7 @@ import numpy as np
 import src.mapping.Mapper as mp
 from src.parameters.parameters import params
 import importlib
-
+import src.mapping.Genotype as gt
 
 class HerdMember:
     def __init__(self, index):
@@ -14,7 +14,7 @@ class HerdMember:
         self.moves = None  # Number of moves made in the search space
         self.best_steps = None  # Best moves made
         self.phenotype = None  # Tree mapped by mapper
-        self.genotype_int = None  # Bitstring converted into integers
+        self.genotype_int = int(0)  # Bitstring converted into integers
         self.nodes = None  # Nodes on tree
         self.invalid = None  # Whether individual is valid for evaluation
         self.max_depth = None  # Max depth of tree
@@ -23,14 +23,8 @@ class HerdMember:
         self.no_of_codons = params['NUMBER_OF_CODONS']
         self.fitnessPath = params['FITNESS_FUNCTION']
 
-        self.genotype = ""
-        for i in range(self.no_of_codons):
-            self.genotype += str((np.random.randint(0, 2, params['CODON_SIZE'])))
-        # Formatting for our bitstring to make allow it to be read for conversion into int
-        self.genotype = self.genotype.replace('[', '')
-        self.genotype = self.genotype.replace(']', '')
-        self.genotype = self.genotype.replace('\n', '')
-        self.genotype = self.genotype.replace(' ', '')
+        self.genotype = gt.genotype(self)
+
 
 
         self.map_self()
@@ -52,9 +46,12 @@ class HerdMember:
         assert member or genotype_int
         assert not (member and genotype_int)
         if member:
+            self.phenotype = member.phenotype
             self.genotype = member.genotype
-
-            self.genotype_int = member.genotype
+            self.nodes = member.nodes
+            self.max_depth = member.max_depth
+            self.used_codons = member.used_codons
+            self.genotype_int = member.genotype_int
             self.phenotype = member.phenotype
         else:
             genotype = ""

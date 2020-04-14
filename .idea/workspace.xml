@@ -2,17 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a3a57024-44e0-4683-9d02-87c6465a472a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/GHPY.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Herd/Herd.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Santa-Fe-Trail/SFT.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/santa_fe/Santa-fe-Trail.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/santa_fe/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/santa_fe/ant_model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/santa_fe/fitness" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fitness/SFT.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fitness/ff_template.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/grammars/SFT.pybnf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mapping/Genotype.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/python_filter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/code.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/code.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GHMain.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GHPY.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/GHPY.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Herd/Herd.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Herd/Herd.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Herd/Herd_Individual.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Herd/Herd_Individual.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Santa-Fe-Trail/SFT.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fitness/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fitness/evaluation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/mapping/Mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapping/Mapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapping/Production_Rules.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapping/Production_Rules.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/Production_Rules.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/parameters/parameters.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/parameters/parameters.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stats/statistics.py" beforeDir="false" afterPath="$PROJECT_DIR$/stats/statistics.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,23 +43,23 @@
   <component name="ProjectId" id="1T6zWrt7b67Ivuu8LUS9QUDaX8B" />
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/fitness" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\src\Herd" />
-      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\src" />
-      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\src\mapping" />
+      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\santa_fe" />
+      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code" />
+      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\Santa-Fe-Trail" />
+      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\src\fitness" />
       <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\src\grammars" />
-      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\fitness" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\src" />
       <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\fitness" />
       <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code" />
       <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\ponyge" />
       <recent name="C:\Users\Joe\AppData\Local\Programs\Python\Python37-32\Lib\site-packages" />
-      <recent name="C:\Users\Joe\AppData\Local\Programs\Python\Python37-32\Lib\site-packages\pytz" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -129,7 +138,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Mapper (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Santa-Fe-Trail" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="code" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -137,11 +146,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/mapping" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Santa-Fe-Trail" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/mapping/Mapper.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Santa-Fe-Trail/Santa-Fe-Trail.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -150,7 +159,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Production_Rules" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Santa-fe-Trail" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="code" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -158,11 +167,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/mapping" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/santa_fe" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/mapping/Production_Rules.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/santa_fe/Santa-fe-Trail.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -171,7 +180,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="evaluation" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="ant_model" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="code" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -179,11 +188,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/fitness" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/santa_fe" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/fitness/evaluation.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/santa_fe/ant_model.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -194,19 +203,19 @@
     </configuration>
     <list>
       <item itemvalue="Python.GHMain (1)" />
-      <item itemvalue="Python.evaluation" />
-      <item itemvalue="Python.Mapper (1)" />
-      <item itemvalue="Python.Production_Rules" />
       <item itemvalue="Python.GHPY" />
       <item itemvalue="Python.Herd_Individual" />
+      <item itemvalue="Python.Santa-Fe-Trail" />
+      <item itemvalue="Python.Santa-fe-Trail" />
+      <item itemvalue="Python.ant_model" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.GHPY" />
         <item itemvalue="Python.Herd_Individual" />
-        <item itemvalue="Python.Production_Rules" />
-        <item itemvalue="Python.Mapper (1)" />
-        <item itemvalue="Python.evaluation" />
+        <item itemvalue="Python.Santa-fe-Trail" />
+        <item itemvalue="Python.ant_model" />
+        <item itemvalue="Python.Santa-Fe-Trail" />
       </list>
     </recent_temporary>
   </component>
@@ -256,7 +265,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585920387979</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="FULLY WORKING WITH CODON SIZE LESS THAN 64">
+      <created>1586696827191</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1586696827192</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -277,7 +293,8 @@
     <MESSAGE value="Added Class files.&#10;Genotype generation added.&#10;Genotype to Phenotype Added.&#10;Grammar File made but empty." />
     <MESSAGE value="Add Production rules py #for the sake of showing production rules generated from integers.&#10;Added more reporters and testers and file passing to initialisation method" />
     <MESSAGE value="Added grammar file and tree mapping from individuals from PONYGE2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added grammar file and tree mapping from individuals from PONYGE2" />
+    <MESSAGE value="FULLY WORKING WITH CODON SIZE LESS THAN 64" />
+    <option name="LAST_COMMIT_MESSAGE" value="FULLY WORKING WITH CODON SIZE LESS THAN 64" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

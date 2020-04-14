@@ -13,14 +13,14 @@ params = {
     'NUMBER_OF_BETAS': 40,
     'NUMBER_OF_ALPHAS': 10,
 
-    'NUMBER_OF_CODONS' : 30,
-    'CODON_SIZE' : 4, # The size of the codon.
+    'NUMBER_OF_CODONS' : 20,
+    'CODON_SIZE' : 8, # The size of the codon.
 
     'TARGET_FITNESS' : 100,
 
-    'GRAMMAR_FILE' : "grammars/letter.bnf", #BNF File path
+    'GRAMMAR_FILE' : "grammars/SFT.pybnf", #BNF File path
 
-    'MAX_TREE_DEPTH' : 6,
+    'MAX_TREE_DEPTH' : 0,
     'MAX_WRAPS' : 10,
 
     'SEED_INVIDIUALS' : [],
@@ -34,7 +34,7 @@ params = {
     'MIN_INIT_TREE_DEPTH': None,
     'PERMUTATION_RAMPS': 5,
 
-
+    'WANDER': 10
 }
 def grammarFileInit():
     params['BNF'] = Grammar(os.path.join(params['GRAMMAR_FILE']))

@@ -34,7 +34,9 @@ class Herd:
     def evaluate_herd(self):
         self.herd_evaluated, self.average_Fitness, self.betas, self.best_fitness, self.best_member \
             = evaluate_herd(self.herd)
-        self.best_phenotype = self.best_member.phenotype
+        if stats['number_of_invalids'] < params['HERD_SIZE']:
+
+            self.best_phenotype = self.best_member.phenotype
 
     def start_evaluation(self):
         for i in range(params['ITERATIONS']):
@@ -47,6 +49,15 @@ class Herd:
                 stats['best_phenotype'] = self.best_phenotype
             if self.target_fitness is not None and self.target_fitness <= self.best_fitness:
                 break
+
+    def evaluate_herd_once(self):
+        last_fitness = self.best_fitness
+        self.evaluate_herd()
+        stats['generation'] += 1
+
+        if last_fitness < self.best_fitness:
+            stats['last_gen_improvement'] = stats['generation']
+            stats['best_phenotype'] = self.best_phenotype
 
 
 

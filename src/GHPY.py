@@ -8,4 +8,10 @@ Created on Sat Oct 12 13:28:49 2019
 """
 import src.Herd.Herd as Herd
 Herd1 = Herd.Herd()
-Herd1.start_evaluation()
+
+for i in range(700):
+    if Herd1.herd[i].invalid:
+        continue
+    else:
+        print("PHENOTYPE")
+        print(Herd1.herd[i].phenotype)

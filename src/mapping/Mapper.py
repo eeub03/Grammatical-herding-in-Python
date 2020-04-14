@@ -1,6 +1,7 @@
 from PGEGrammar import tree as tr
 from src.parameters.parameters import params
-from src.mapping import Production_Rules as pr
+
+from src.python_filter import python_filter
 import numpy as np
 
 
@@ -12,9 +13,15 @@ def mapper(herd_member):
     else:
         print("invalid")
 
+    if params['BNF'].python_mode and not invalid:
+        # Grammar contains python code
+        print("PYTHON")
+        tree = python_filter(tree)
+
     if invalid:
         # Set values for invalid individuals.
-        phenotype, genotype_int,nodes, depth, used_codons = None,np.NaN, np.NaN, np.NaN, np.NaN
+        tree, genotype_int,nodes, depth, used_codons = None,np.NaN, np.NaN, np.NaN, np.NaN
+
 
     return tree, genotype_int, nodes, invalid, depth, used_codons
 
@@ -24,28 +31,28 @@ def convert_bs_to_int(genotype,herd_member):
     :param herd_member: Used to get the herd members number of codons, used for the size of the phenotype
     :return genotype_int:
     """
+    try:
+        genotype_int = []
 
-    genotype_int = [] * (herd_member.no_of_codons)
-    genotype_list = [str(x) for x in genotype]
+        genotype_list = [str(x) for x in genotype]
+        for i in range(params['NUMBER_OF_CODONS']):
 
-    for i in range(params['NUMBER_OF_CODONS']):
 
-        if i <= herd_member.no_of_codons:
 
             current_codon = i * params['CODON_SIZE']
 
             gl = genotype_list[current_codon: (current_codon + params['CODON_SIZE'])]
-
             gs = ""
             genotype_string = gs.join(gl)
-
+            print(genotype_string)
+            print(int(genotype_string,2))
             genotype_int.append(int(genotype_string, 2))
 
-        else:
-            genotype_int.insert(0)
+        print(genotype_int)
+        return genotype_int
 
-
-    return genotype_int
+    except ValueError:
+        print("Genotype Error: " + genotype)
 
 
 def map_tree_from_member(genotype,herd_member):
@@ -98,6 +105,7 @@ def map_tree(tree, genotype, genotype_int, phenotype_output, index, depth, max_d
             print("Max breached")
             invalid = True
 
+
         # Increment and set number of nodes and current depth.
         nodes += 1
         depth += 1
@@ -113,9 +121,8 @@ def map_tree(tree, genotype, genotype_int, phenotype_output, index, depth, max_d
         tree.codon = genotype_int[index % len(genotype_int)]
 
         # Here we use my production rule function instead of PONYGE's to get the production rule
-        selection = pr.mapping(genotype_int, no_choices)
-        prod_index = selection[index]
-        chosen_prod_rule = production_choices[prod_index]
+        selection = tree.codon % no_choices
+        chosen_prod_rule = production_choices[selection]
 
         index += 1
 
@@ -166,6 +173,7 @@ def map_tree(tree, genotype, genotype_int, phenotype_output, index, depth, max_d
 
         if params['MAX_TREE_DEPTH'] and (max_depth > params['MAX_TREE_DEPTH']):
             # If our maximum depth exceeds the limit, the solution is invalid.
+            print("MAX_DEPTH BREACHED")
             invalid = True
 
     return phenotype_output, index, nodes, depth, max_depth, invalid
