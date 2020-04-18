@@ -1,39 +1,19 @@
+from fitness.santa_fe.ant_model import *
+
+from src.parameters.parameters import  params
+
 from src.fitness.base_ff import base_ff
 
 
 
-class ff_template(base_ff):
+class sft(base_ff):
     """
-    Basic fitness function template for writing new fitness functions. This
-    basic template inherits from the base fitness function class, which
-    contains various checks and balances.
-
-    Note that all fitness functions must be implemented as a class.
-
-    Note that the class name must be the same as the file name.
-
-    Important points to note about base fitness function class from which
-    this template inherits:
-
-      - Default Fitness values (can be referenced as "self.default_fitness")
-        are set to NaN in the base class. While this can be over-written,
-        PonyGE2 works best when it can filter solutions by NaN values.
-
-      - The standard fitness objective of the base fitness function class is
-        to minimise fitness. If the objective is to maximise fitness,
-        this can be over-written by setting the flag "maximise = True".
+        :param base_ff: Template class for fitness function
 
     """
 
-    # The base fitness function class is set up to minimise fitness.
-    # However, if you wish to maximise fitness values, you only need to
-    # change the "maximise" attribute here to True rather than False.
-    # Note that if fitness is being minimised, it is not necessary to
-    # re-define/overwrite the maximise attribute here, as it already exists
-    # in the base fitness function class.
-    maximise = False
 
-    def __init__(self):
+    def __init__(self,ind):
         """
         All fitness functions which inherit from the bass fitness function
         class must initialise the base class during their own initialisation.
@@ -41,8 +21,16 @@ class ff_template(base_ff):
 
         # Initialise base fitness function class.
         super().__init__()
+        self.ind = ind
 
-    def evaluate(self, ind, **kwargs):
+        model = Ant_Model(self.ind.index, self.ind.phenotype, self.ind)
+        for i in range(params['MAX_STEPS']):
+            model.step()
+            self.ind, self.fitness = model.return_agent()
+            if self.ind != None:
+                break
+
+    def evaluate(self, **kwargs):
         """
         Default fitness execution call for all fitness functions. When
         implementing a new fitness function, this is where code should be added
@@ -59,9 +47,7 @@ class ff_template(base_ff):
         :return: The fitness of the evaluated individual.
         """
 
-        # Evaluate the fitness of the phenotype
-        for i, row in enumerate(open("Santa-Fe-Trail/fitness.txt")):
-            if i == ind.index:
-                fitness = row
 
-        return fitness
+        return self.fitness
+    def get_ind_stats(self, ind,**kwargs):
+        return self.ind

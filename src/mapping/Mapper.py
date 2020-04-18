@@ -15,7 +15,7 @@ def mapper(herd_member):
 
     if params['BNF'].python_mode and not invalid:
         # Grammar contains python code
-        print("PYTHON")
+
         tree = python_filter(tree)
 
     if invalid:
@@ -31,28 +31,26 @@ def convert_bs_to_int(genotype,herd_member):
     :param herd_member: Used to get the herd members number of codons, used for the size of the phenotype
     :return genotype_int:
     """
-    try:
-        genotype_int = []
 
-        genotype_list = [str(x) for x in genotype]
-        for i in range(params['NUMBER_OF_CODONS']):
+    genotype_int = []
+
+    genotype_list = [str(x) for x in genotype]
+
+    for i in range(params['NUMBER_OF_CODONS']):
 
 
 
-            current_codon = i * params['CODON_SIZE']
+        current_codon = i * params['CODON_SIZE']
 
-            gl = genotype_list[current_codon: (current_codon + params['CODON_SIZE'])]
-            gs = ""
-            genotype_string = gs.join(gl)
-            print(genotype_string)
-            print(int(genotype_string,2))
-            genotype_int.append(int(genotype_string, 2))
+        gl = genotype_list[current_codon: (current_codon + params['CODON_SIZE'])]
+        gs = ""
+        genotype_string = gs.join(gl)
 
-        print(genotype_int)
-        return genotype_int
+        genotype_int.append(int(genotype_string, 2))
 
-    except ValueError:
-        print("Genotype Error: " + genotype)
+
+    return genotype_int
+
 
 
 def map_tree_from_member(genotype,herd_member):
@@ -95,7 +93,6 @@ def map_tree(tree, genotype, genotype_int, phenotype_output, index, depth, max_d
     function
     """
 
-
     if not invalid and index < len(genotype_int) * (params['MAX_WRAPS'] + 1):
         # If the solution is not invalid thus far, and if we still have
         # remaining codons in the genome, then we can continue to map the tree.
@@ -134,11 +131,15 @@ def map_tree(tree, genotype, genotype_int, phenotype_output, index, depth, max_d
             if symbol["type"] == "T":
                 # Append the child to the parent node. Child is a terminal, do
                 # not recurse.
+
+
                 tree.children.append(tr.Tree(symbol["symbol"], tree))
+
                 phenotype_output.append(symbol["symbol"])
 
             elif symbol["type"] == "NT":
                 # Append the child to the parent node.
+
                 tree.children.append(tr.Tree(symbol["symbol"], tree))
 
                 # Recurse by calling the function again to map the next

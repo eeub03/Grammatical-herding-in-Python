@@ -8,10 +8,11 @@ import os
 params = {
 
     'HERD_SIZE': 700, # Herd size
-    'ITERATIONS' : 1, # Iterations/generations
+    'ITERATIONS' : 500, # Iterations/generations
     # GRAMMATICAL HERDING PARAMETERS
     'NUMBER_OF_BETAS': 40,
     'NUMBER_OF_ALPHAS': 10,
+    'WANDER': 10,
 
     'NUMBER_OF_CODONS' : 20,
     'CODON_SIZE' : 8, # The size of the codon.
@@ -21,11 +22,11 @@ params = {
     'GRAMMAR_FILE' : "grammars/SFT.pybnf", #BNF File path
 
     'MAX_TREE_DEPTH' : 0,
-    'MAX_WRAPS' : 10,
+    'MAX_WRAPS' : 30,
 
     'SEED_INVIDIUALS' : [],
     # Fitness_function
-    'FITNESS_FUNCTION': "string_match",
+    'FITNESS_FUNCTION': "sft",
     # INITIALISATION.
     'TARGET' : 'Hello world!',
     # Set the maximum tree depth for initialisation.
@@ -34,7 +35,11 @@ params = {
     'MIN_INIT_TREE_DEPTH': None,
     'PERMUTATION_RAMPS': 5,
 
-    'WANDER': 10
+    # Santa Fe Trail params
+    'MAX_STEPS' : 900,
+
 }
 def grammarFileInit():
-    params['BNF'] = Grammar(os.path.join(params['GRAMMAR_FILE']))
+
+    params['BNF'] = Grammar(os.path.join("C:/Users/Joe/Documents/3 YEAR PROJECT IMPORTANT/code/src",params['GRAMMAR_FILE']))
+

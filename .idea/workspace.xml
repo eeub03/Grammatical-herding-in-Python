@@ -2,26 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a3a57024-44e0-4683-9d02-87c6465a472a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/santa_fe/Santa-fe-Trail.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/santa_fe/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/santa_fe/ant_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/santa_fe/fitness" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fitness/SFT.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fitness/ff_template.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/grammars/SFT.pybnf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mapping/Genotype.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/python_filter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/code.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/code.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Herd/Herd_Member.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fitness/santa_fe/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/santa_fe/Santa-fe-Trail.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/santa_fe/ant_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fitness/santa_fe/ant_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/santa_fe/trail/data.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/fitness/santa_fe/trail/data.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GHPY.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/GHPY.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Herd/Herd.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Herd/Herd.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Herd/Herd_Individual.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Herd/Herd_Individual.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Santa-Fe-Trail/SFT.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Herd/Herd_Individual.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fitness/SFT.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fitness/SFT.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fitness/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fitness/evaluation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/grammars/SFT.pybnf" beforeDir="false" afterPath="$PROJECT_DIR$/src/grammars/SFT.pybnf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/mapping/Mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapping/Mapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapping/Production_Rules.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/parameters/parameters.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/parameters/parameters.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stats/statistics.py" beforeDir="false" afterPath="$PROJECT_DIR$/stats/statistics.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,19 +42,19 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\santa_fe" />
-      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code" />
-      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\Santa-Fe-Trail" />
-      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\src\fitness" />
-      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\src\grammars" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\src" />
       <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\fitness" />
       <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code" />
       <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\ponyge" />
       <recent name="C:\Users\Joe\AppData\Local\Programs\Python\Python37-32\Lib\site-packages" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\src\fitness" />
+      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\src\fitness\santa_fe" />
+      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\santa_fe" />
+      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code" />
+      <recent name="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\Santa-Fe-Trail" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -96,7 +91,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="GHPY" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="GHPY" type="PythonConfigurationType" factoryName="Python">
       <module name="code" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -138,27 +133,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Santa-Fe-Trail" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="code" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Santa-Fe-Trail" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Santa-Fe-Trail/Santa-Fe-Trail.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="Santa-fe-Trail" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="code" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -171,7 +145,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/santa_fe/Santa-fe-Trail.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\src\fitness\Santa-fe-Trail.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -192,7 +166,28 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/santa_fe/ant_model.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Joe\Documents\3 YEAR PROJECT IMPORTANT\code\src\fitness\santa_fe\ant_model.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="parameters" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/parameters" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/parameters/parameters.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -205,17 +200,16 @@
       <item itemvalue="Python.GHMain (1)" />
       <item itemvalue="Python.GHPY" />
       <item itemvalue="Python.Herd_Individual" />
-      <item itemvalue="Python.Santa-Fe-Trail" />
       <item itemvalue="Python.Santa-fe-Trail" />
       <item itemvalue="Python.ant_model" />
+      <item itemvalue="Python.parameters" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.GHPY" />
-        <item itemvalue="Python.Herd_Individual" />
+        <item itemvalue="Python.parameters" />
         <item itemvalue="Python.Santa-fe-Trail" />
         <item itemvalue="Python.ant_model" />
-        <item itemvalue="Python.Santa-Fe-Trail" />
+        <item itemvalue="Python.Herd_Individual" />
       </list>
     </recent_temporary>
   </component>
@@ -298,6 +292,12 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PGEGrammar/grammar.py</url>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">

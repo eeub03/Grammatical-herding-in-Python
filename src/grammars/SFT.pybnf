@@ -2,6 +2,6 @@
 
 <line> ::= <condition> | <op>
 
-<condition> ::= if food_ahead(){:<line>:} else {:<line>:}
+<condition> ::= if self.is_food_ahead(): {:<line>:}else: {:<line>:}
 
-<op> ::= left() | right() | move()
+<op> ::= self.left() | self.right() | self.move()
