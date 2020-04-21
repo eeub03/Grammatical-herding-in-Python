@@ -1,5 +1,4 @@
 import json
-import datetime
 stats = {
     "generation" : 0,
     "best_fitness_list": [],
@@ -12,8 +11,10 @@ stats = {
     "best_steps" : 0,
     "average_steps" : 0,
     "average_fitness": [],
-    "alpha_average": 0,
-
+    "average_herd_fitness": [],
+    "beta_fitness": 0,
+    "herd_movement": 0,
+    "best_iteration_fitness": 0,
 }
 geno_int_cache = {}
 pheno_cache = {}

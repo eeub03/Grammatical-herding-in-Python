@@ -1,8 +1,8 @@
+import numpy as np
+
 from PGEGrammar import tree as tr
 from src.parameters.parameters import params
-
 from src.python_filter import python_filter
-import numpy as np
 
 
 def mapper(herd_member):
@@ -35,19 +35,18 @@ def convert_bs_to_int(genotype,herd_member):
     genotype_int = []
 
     genotype_list = [str(x) for x in genotype]
+    try:
+        for i in range(params['NUMBER_OF_CODONS']):
+            current_codon = i * params['CODON_SIZE']
 
-    for i in range(params['NUMBER_OF_CODONS']):
+            gl = genotype_list[current_codon: (current_codon + params['CODON_SIZE'])]
+            gs = ""
+            genotype_string = gs.join(gl)
 
-
-
-        current_codon = i * params['CODON_SIZE']
-
-        gl = genotype_list[current_codon: (current_codon + params['CODON_SIZE'])]
-        gs = ""
-        genotype_string = gs.join(gl)
-
-        genotype_int.append(int(genotype_string, 2))
-
+            genotype_int.append(int(genotype_string, 2))
+    except ValueError:
+        print(len(genotype_list))
+        print(genotype_string)
 
     return genotype_int
 

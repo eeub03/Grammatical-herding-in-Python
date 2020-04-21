@@ -6,11 +6,10 @@ Created on Sat Oct 12 13:28:49 2019
 @name: Grammatical Herding in Python
 @version: 0.1a
 """
-import src.Herd.Herd as Herd
-import stats.statistics as stats
-from multiprocessing import Pool
-from src.parameters.parameters  import params
+from src.parameters.parameters import params
 """PONYGE'S CODE"""
+import src.Herd.Herd as Herd
+Herd1 = Herd.Herd()
 def pool_init(params_):
     """
     When initialising the pool the original params dict (params_) is passed in
@@ -26,10 +25,28 @@ def pool_init(params_):
     if system() == 'Windows':
         params.update(params_)
 
-if params['MULTICORE']:
-    # initialize pool once, if mutlicore is enabled
-    params['POOL'] = Pool(processes=params['CORES'], initializer=pool_init,
-                          initargs=(params,))  # , maxtasksperchild=1)
-Herd1 = Herd.Herd()
-Herd1.start_evaluation()
-stats.save()
+
+def main():
+
+    import stats.statistics as stats
+    from src.parameters.parameters import params
+    from multiprocessing import Pool
+    if params['MULTICORE']:
+
+        # initialize pool once, if mutlicore is enabled
+        params['POOL'] = Pool(processes=params['CORES'], initializer=pool_init,
+                              initargs=(params,))  # , maxtasksperchild=1)
+
+
+
+
+    Herd1.start_evaluation()
+    stats.save()
+    if params['MULTICORE']:
+        params['POOL'].close()
+
+
+
+
+if __name__ == '__main__':
+    main()

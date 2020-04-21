@@ -1,28 +1,30 @@
 from PGEGrammar.grammar import Grammar
 from socket import gethostname
 
-
+from multiprocessing import cpu_count
 hostname = gethostname().split('.')
 machine_name = hostname[0]
 import os
 params = {
 
-    'HERD_SIZE': 700, # Herd size
-    'ITERATIONS' : 500, # Iterations/generations
+    'HERD_SIZE': 1000, # Herd size
+    'ITERATIONS' : 400, # Iterations/generations
     # GRAMMATICAL HERDING PARAMETERS
-    'NUMBER_OF_BETAS': 40,
-    'NUMBER_OF_ALPHAS': 10,
+    'NUMBER_OF_BETAS': 20,
+    'NUMBER_OF_ALPHAS': 3,
     'WANDER': 10,
 
-    'NUMBER_OF_CODONS' : 20,
-    'CODON_SIZE' : 8, # The size of the codon.
+    'NUMBER_OF_CODONS' : 30,
+    'CODON_SIZE' : 4, # The size of the codon.
 
     'TARGET_FITNESS' : 100,
 
-    'GRAMMAR_FILE' : "grammars/SFT.pybnf", #BNF File path
+    'GRAMMAR_FILE' : "grammars/SFT3.pybnf", #BNF File path
 
-    'MAX_TREE_DEPTH' : 0,
-    'MAX_WRAPS' : 30,
+    'MAX_TREE_DEPTH' : None,
+    'MAX_WRAPS' : 10,
+    'MULTICORE' : False,
+    'CORES' : cpu_count(),
 
     'SEED_INVIDIUALS' : [],
     # Fitness_function
@@ -38,6 +40,8 @@ params = {
     # Santa Fe Trail params
     'MAX_STEPS' : 900,
 
+    # MESA Settings
+    'BATCH' : False,
 }
 def grammarFileInit():
 

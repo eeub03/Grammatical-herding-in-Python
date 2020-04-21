@@ -2,6 +2,7 @@ import importlib
 
 import src.mapping.Genotype as gt
 import src.mapping.Mapper as mp
+from src.mapping.Key_Gen import get_geno_key
 from src.parameters.parameters import params
 from stats.statistics import geno_int_cache, pheno_cache
 
@@ -28,77 +29,64 @@ class Herd_Member:
         self.best_steps = 0
         self.map_self()
 
+        module = importlib.import_module('src.fitness.' + params['FITNESS_FUNCTION'])
+        self.fitness_class = getattr(module, params['FITNESS_FUNCTION'])
+
         self.get_fitness()
+
         if not self.invalid:
-            key = self.get_geno_key()
+            key = get_geno_key(self, None)
             geno_int_cache[key] = self.phenotype
-            pheno_cache[self.phenotype] = self.fitness
             self.best_genotype_int = self.genotype_int
 
-    def get_geno_key(self):
 
-        list_int = self.genotype_int
-        i =0
-        str_int = ""
-        while i < len(list_int):
 
-            str_int += str(list_int[i])
-            i += 1
-        str_int = str_int.replace('.','')
-        str_int = str_int.replace('-', '')
-        key = int(str_int)
-        return key
+    def generate_fitness(self):
 
-    def get_fitness(self):
-        
-        module = importlib.import_module('src.fitness.' + params['FITNESS_FUNCTION'])
-        fitness_class = getattr(module, params['FITNESS_FUNCTION'])
-
-        if self.invalid:
-            self.fitness = 0
-        else:
-            fitness_Object = fitness_class(self)
+        if params['BATCH'] == False:
+            fitness_Object = self.fitness_class(self)
             self.fitness = fitness_Object.evaluate()
 
+        pheno_cache[self.phenotype] = self.fitness
 
+    def get_fitness(self):
+        if self.invalid or self.phenotype == None:
+            self.fitness = 0
+        else:
 
-    def change_genotype_to(self,genotype_int):
-
-        self.genotype_int = genotype_int
-
-        key = self.get_geno_key()
-
-        if key in geno_int_cache:
-
-            self.phenotype = geno_int_cache[key]
-            if self.phenotype in pheno_cache:
+            key = get_geno_key(self, None)
+            if key in geno_int_cache and self.phenotype in pheno_cache:
                 self.fitness = pheno_cache[self.phenotype]
             else:
-                self.get_fitness()
-                pheno_cache[self.phenotype] = self.fitness
-        else:
-            genotype = ""
-            for i in range(len(genotype_int)):
-                integer_val = format(int(genotype_int[i]), "b")
-                if len(integer_val) < params['CODON_SIZE']:
-                    zeros = params['CODON_SIZE'] - len(integer_val)
-                    string_zeros = "0" * zeros
-                    integer_val = string_zeros + integer_val
+                self.generate_fitness()
+        if params['MULTICORE']:
+            return self
 
-                genotype += integer_val
 
-            genotype = genotype.replace("-", "")
-            genotype = genotype.replace(" ", "")
 
-            self.genotype = genotype
-            self.map_self()
-            if not self.invalid:
-                self.invalid = False
-                key = self.get_geno_key()
-                geno_int_cache[key] = self.phenotype
-                self.get_fitness()
-                pheno_cache[self.phenotype] = self.fitness
+    def change_genotype_to(self, genotype_int):
 
+        self.genotype_int = genotype_int
+        genotype = ""
+        for i in range(self.no_of_codons):
+            integer_val = format(int(genotype_int[i]), "b")
+            integer_val = integer_val.replace("-","")
+            integer_val = integer_val.replace(".", "")
+            if len(integer_val) < params['CODON_SIZE']:
+                zeros = params['CODON_SIZE'] - len(integer_val)
+                string_zeros = "0" * zeros
+                integer_val = string_zeros + integer_val
+
+            genotype += integer_val
+
+
+
+        self.genotype = genotype
+        self.map_self()
+        if not self.invalid:
+            self.invalid = False
+            key = get_geno_key(self, None)
+            geno_int_cache[key] = self.phenotype
 
 
 
