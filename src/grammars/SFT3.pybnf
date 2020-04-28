@@ -1,9 +1,5 @@
-<code> ::= <line> |<code>{::}<line>
+<expr> ::= <line> |<expr>{::}<line>
 
-<line> ::= <condition> | <op>
-
-<condition> ::= if self.is_food_ahead(): {:<opcode>:}else: {:<opcode>:}
+<line> ::= if self.is_food_ahead(): {:<expr>:}else: {:<expr>:} | <op>
 
 <op> ::= self.left() | self.right() | self.move()
-
-<opcode> ::= <op> | <opcode>{::}<op>

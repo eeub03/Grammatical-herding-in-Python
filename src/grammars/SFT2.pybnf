@@ -1,5 +1,10 @@
-<code> ::= <condition> |<code>{::}<condition>
+<prog> ::= <code>
+<code> ::= <line> |<code>{::}<line>
 
-<condition> ::= if self.is_food_ahead(): {:<code>:}else: {:<code>:} | <op>
+<line> ::= <condition> | <op>
+
+<condition> ::= if self.is_food_ahead(): {:<opcode>:}else: {:<opcode>:}
 
 <op> ::= self.left() | self.right() | self.move()
+
+<opcode> ::= <op> | <opcode>{::}<op>

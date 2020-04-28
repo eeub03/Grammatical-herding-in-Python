@@ -1,15 +1,33 @@
+# For maths functions
 import numpy as np
 
+# PONYGE's tree file. We use the Grammar File in our Parameters .py file.
 from PGEGrammar import tree as tr
+# Parameters for tree construction
 from src.parameters.parameters import params
+# If BNF is pyBNF we need to convert the grammar to python code with proper indentation
 from src.python_filter import python_filter
 
+"""
+NOT MY CODE PONYGE'S 
+"""
 
 def mapper(herd_member):
+    """
+    Mapping function for an individual of the herd. Turns their Genotype into a coordinate as
+    well as into a phenotype to mapped into a program from a grammar and tree.
+    :param herd_member: Individual from herd to be mapped to a grammar tree
+    :return tree: The phenotype of the individual that was mapped.
+    :return genotype_int: The coordinate of the individual in the search space
+    :return nodes: The nodes in the phenotype tree
+    :return invalid: Whethere the individuals Phenotype is invalid
+    :return depth: The depth of the tree of the mapped individual
+    :return used_codons: The codons that were used by the tree
+    """
     if herd_member:
         genotype = herd_member.genotype
 
-        tree, genotype_int,  nodes, invalid, depth, used_codons = map_tree_from_member(genotype, herd_member)
+        tree, genotype_int, nodes, invalid, depth, used_codons = map_tree_from_member(genotype)
     else:
         print("invalid")
 
@@ -20,16 +38,17 @@ def mapper(herd_member):
 
     if invalid:
         # Set values for invalid individuals.
-        tree, genotype_int,nodes, depth, used_codons = None,np.NaN, np.NaN, np.NaN, np.NaN
-
+        tree, genotype_int, nodes, depth, used_codons = None, np.NaN, np.NaN, np.NaN, np.NaN
 
     return tree, genotype_int, nodes, invalid, depth, used_codons
 
-def convert_bs_to_int(genotype,herd_member):
+
+def convert_bs_to_int(genotype):
     """
+    This function converts a Binary String Genotype into integer coordinates.
+    Assumes Bitstring is one long connected string consisting of 0's and 1's e.g "000000101010"
     :param genotype: Bitstring of the herd member
-    :param herd_member: Used to get the herd members number of codons, used for the size of the phenotype
-    :return genotype_int:
+    :return genotype_int: The coordinate of the individual in the search space
     """
 
     genotype_int = []
@@ -45,18 +64,29 @@ def convert_bs_to_int(genotype,herd_member):
 
             genotype_int.append(int(genotype_string, 2))
     except ValueError:
+
+        # error checking when converting to integer
         print(len(genotype_list))
         print(genotype_string)
+        raise ValueError("Check the genotype being passed is a Binary String")
 
     return genotype_int
 
+"""
+NOT MY CODE PONYGE'S 
+"""
+def map_tree_from_member(genotype):
 
-
-def map_tree_from_member(genotype,herd_member):
+    """
+    Creates the tree from the genotype of a Herd member by converting their Genotype into an
+    integer coordinate in the search space and mapping that into a tree.
+    :param genotype: The bitstring of the individual to be mapped
+    :return:
+    """
     # Initialise an instance of the tree class
 
     tree1 = tr.Tree(params['BNF'].start_rule["symbol"], None)
-    genotype_int = convert_bs_to_int(genotype, herd_member)
+    genotype_int = convert_bs_to_int(genotype)
 
     # Map tree from the given genome
     output, used_codons, nodes, depth, max_depth, invalid = \
@@ -69,8 +99,14 @@ def map_tree_from_member(genotype,herd_member):
     else:
         return phenotype, genotype_int, nodes, invalid, max_depth, used_codons
 
+"""
+NOT MY CODE PONYGE'S 
+"""
 def map_tree(tree, genotype, genotype_int, phenotype_output, index, depth, max_depth, nodes, invalid=False):
+
     """
+    This is a recursive function that maps nodes to the tree and checks the depth to see if the individual is invalid
+    Also maps coordinates of individual into production rules for Phenotype mapping
       :param tree: Instance of the tree class
       :param genotype: Bitstring of the individual
       :param genotype_int: Integer conversion of the Bitstring
@@ -87,10 +123,7 @@ def map_tree(tree, genotype, genotype_int, phenotype_output, index, depth, max_d
              invalid, a boolean flag indicating whether or not the
              individual is invalid.
     """
-    """
-    Edited version of PONYGE2'S GENOME_MAP function. Mostly my own code using my production rule selection
-    function
-    """
+
 
     if not invalid and index < len(genotype_int) * (params['MAX_WRAPS'] + 1):
         # If the solution is not invalid thus far, and if we still have
@@ -100,7 +133,6 @@ def map_tree(tree, genotype, genotype_int, phenotype_output, index, depth, max_d
             # We have breached our maximum tree depth limit.
             print("Max breached")
             invalid = True
-
 
         # Increment and set number of nodes and current depth.
         nodes += 1
@@ -130,8 +162,6 @@ def map_tree(tree, genotype, genotype_int, phenotype_output, index, depth, max_d
             if symbol["type"] == "T":
                 # Append the child to the parent node. Child is a terminal, do
                 # not recurse.
-
-
                 tree.children.append(tr.Tree(symbol["symbol"], tree))
 
                 phenotype_output.append(symbol["symbol"])
@@ -144,9 +174,9 @@ def map_tree(tree, genotype, genotype_int, phenotype_output, index, depth, max_d
                 # Recurse by calling the function again to map the next
                 # non-terminal from the genome.
                 phenotype_output, index, nodes, d, max_depth, invalid = \
-                    map_tree(tree.children[-1], genotype, genotype_int,phenotype_output,
-                                    index, depth, max_depth, nodes,
-                                    invalid=invalid)
+                    map_tree(tree.children[-1], genotype, genotype_int, phenotype_output,
+                             index, depth, max_depth, nodes,
+                             invalid=invalid)
 
 
     else:

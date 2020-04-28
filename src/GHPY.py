@@ -4,11 +4,11 @@ Created on Sat Oct 12 13:28:49 2019
 
 @author: Joseph Morgan
 @name: Grammatical Herding in Python
-@version: 0.1a
+@version: 1.0
 """
 from src.parameters.parameters import params
-"""PONYGE'S CODE"""
 import src.Herd.Herd as Herd
+# Initialises Herd
 Herd1 = Herd.Herd()
 def pool_init(params_):
     """
@@ -39,8 +39,9 @@ def main():
 
 
 
-
+    # Start run of herd
     Herd1.start_evaluation()
+
     stats.save()
     if params['MULTICORE']:
         params['POOL'].close()

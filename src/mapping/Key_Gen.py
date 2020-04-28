@@ -1,4 +1,9 @@
 def get_geno_key(ind, genotype_int):
+    """
+    :param ind: Individual to get Genotype_int from
+    :param genotype_int: Coordinate in the search space to generate a key for
+    :return: Key to identify coordinate already mapped in the cache
+    """
     assert ind or genotype_int
     assert not (ind and genotype_int)
     if ind:

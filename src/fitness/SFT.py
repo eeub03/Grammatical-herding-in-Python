@@ -13,7 +13,7 @@ class sft(base_ff):
     """
 
 
-    def __init__(self,ind):
+    def __init__(self):
         """
         All fitness functions which inherit from the bass fitness function
         class must initialise the base class during their own initialisation.
@@ -22,15 +22,9 @@ class sft(base_ff):
         # Initialise base fitness function class.
         super().__init__()
 
-        self.ind = ind
-        model = Ant_Model( self.ind)
-        for i in range(params['MAX_STEPS']):
-            model.step()
-            self.ind, self.fitness = model.return_agent()
-            if self.ind != None or self.fitness == 89:
-                break
 
-    def evaluate(self, **kwargs):
+
+    def evaluate(self,ind,**kwargs):
         """
         Default fitness execution call for all fitness functions. When
         implementing a new fitness function, this is where code should be added
@@ -44,9 +38,14 @@ class sft(base_ff):
 
         :param ind: An individual to be evaluated.
         :param kwargs: Optional extra arguments.
-        :return: The fitness of the evaluated individual.
+        :return: The fitness of the evaluated individual and the steps
         """
+        self.ind = ind
+        model = Ant_Model( self.ind)
+        for i in range(params['MAX_STEPS']):
+            model.step()
+            self.ind, self.fitness, self.steps = model.return_agent()
+            if self.ind != None or self.fitness == 89:
+                break
 
-        return self.fitness
-    def get_ind_stats(self, ind,**kwargs):
-        return self.ind
+        return self.fitness, self.steps

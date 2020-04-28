@@ -1,7 +1,8 @@
 from mesa import *
-from mesa.time import RandomActivation
-from mesa.space import MultiGrid
 from mesa.datacollection import DataCollector
+from mesa.space import MultiGrid
+from mesa.time import RandomActivation
+
 
 # Function that tracks the number of food eaten by the ant
 def get_stats(model):
@@ -19,7 +20,7 @@ class AntAgent(Agent):
         # default is right
         self.facing = 0
         # Sets the patch in fron as the patch the ant is currently facing
-        self.facing_pos = (0,1)
+        self.facing_pos = (1,31)
         # The number of food eaten by the ant
         self.food_eaten = 0
         # The current individuals Phenotype that is being used by the ant
@@ -30,36 +31,14 @@ class AntAgent(Agent):
 
     def move(self):
         # Current location of ant in trail
-        x, y = self.pos
+
         # Conditions that check where the ant is facing and sets the facing position to be moved into as the patch after
-        # facing right
-        if self.facing == 0:
-            new_pos = self.facing_pos
-            self.facing_pos = (x + 2, y)
-        # facing down
-        elif self.facing == 1:
-            new_pos = (x, y - 1)
-            self.facing_pos = (x, y - 2)
-        # facing left
-        elif self.facing == 2:
-            new_pos = self.facing_pos
-            self.facing_pos = (x - 2, y)
-        # facing up
-        else:
-            new_pos = self.facing_pos
-            self.facing_pos = (x , y + 2)
-        # These conditions just allow the ant to loop round the world
-        if self.facing_pos[0] > 31:
-            self.facing_pos = (0,self.facing_pos[1])
-        elif self.facing_pos[1] > 31:
-            self.facing_pos = (self.facing_pos[0], 0)
-        elif self.facing_pos[0] < 0:
-            self.facing_pos = (31, self.facing_pos[1])
-        elif self.facing_pos[1] < 0:
-            self.facing_pos = (self.facing_pos[0], 31)
+        new_pos = self.facing_pos
 
         self.model.grid.move_agent(self, new_pos)
-        self.model.schedule.steps += 1
+        self.get_facing_pos()
+
+        self.steps += 1
 
         food = self.model.grid.get_cell_list_contents([self.pos])
         if len(food) > 1:
@@ -73,42 +52,73 @@ class AntAgent(Agent):
 
 
     def left(self):
-        self.model.schedule.steps += 1
+        self.steps += 1
         self.facing = self.facing - 1
         if self.facing == -1:
             self.facing = 3
+        self.get_facing_pos()
+
 
 
     def right(self):
-        self.model.schedule.steps += 1
+        self.steps += 1
         self.facing = self.facing + 1
         if self.facing == 4:
             self.facing = 0
+        self.get_facing_pos()
 
     def is_food_ahead(self):
+        self.steps += 1
 
-        self.model.schedule.steps += 1
         food = self.model.grid.get_cell_list_contents([self.facing_pos])
 
         if len(food) > 0:
             return True
 
+    def get_facing_pos(self):
+        x, y = self.pos
+        if self.facing == 0:
+            self.facing_pos = (x + 1, y)
+        # facing down
+        elif self.facing == 1:
+            self.facing_pos = (x, y - 1)
+        # facing left
+        elif self.facing == 2:
+
+            self.facing_pos = (x - 1, y)
+        # facing up
+        else:
+            self.facing_pos = (x, y + 1)
+
+        # These conditions just allow the ant to loop round the world
+        if self.facing_pos[0] > 31:
+            self.facing_pos = (0, self.facing_pos[1])
+        elif self.facing_pos[1] > 31:
+            self.facing_pos = (self.facing_pos[0], 0)
+        elif self.facing_pos[0] < 0:
+            self.facing_pos = (31, self.facing_pos[1])
+        elif self.facing_pos[1] < 0:
+            self.facing_pos = (self.facing_pos[0], 31)
+
     def step(self):
+
         # If our agent eats all the food, achieving 100% fitness. Then the best solution is found
         if self.food_eaten == 89:
+            print("YES")
+        if self.food_eaten > 88:
             print("found")
-            if self.ind.best_steps > self.model.schedule.steps:
-                self.ind.best_steps = self.model.schedule.steps
-                self.complete_ind = self.ind
-                self.model.schedule.steps = 900
-        elif self.model.schedule.steps == 900:
+            if self.ind.best_steps > self.steps:
+                self.ind.best_steps = self.steps
+            print(self.steps)
+            self.complete_ind = self.ind
+
+        elif self.steps >= 900:
             if self.ind.best_steps == 0:
                 self.ind.best_steps = 900
             self.complete_ind = self.ind
             self.ind.steps = 900
         else:
             exec(self.model.get_actions())
-            self.steps = self.model.schedule.steps
 
 
 class Food(Agent):
@@ -164,5 +174,5 @@ class Ant_Model(Model):
     def return_agent(self):
         ind = self.ants[0]
 
-        return ind.complete_ind, ind.food_eaten
+        return ind.complete_ind, ind.food_eaten, ind.steps
 
