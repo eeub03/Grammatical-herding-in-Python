@@ -1,0 +1,14 @@
+Author: Joseph Morgan
+Date: 30/04/2020
+Project Name: Grammatical Herding in Python
+
+
+Hi, this is a tool made in Python that implements the Grammatical Herding algorithm made by Chris Headleand.
+This tool was made for my 3rd year dissertation project at Bangor UNI. It currently doesn't have full functionality and
+will no longer be supported or updated.
+
+To use the tool, you need to define a fitness function, using the fitness function template, and then adjust the
+parameters in the 'paramaters.py' file.
+
+Setup.py is provided as a proof of concept. However, if it would be updated, this would allow for the tool
+to be installed as a module.
