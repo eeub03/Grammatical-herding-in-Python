@@ -1,7 +1,9 @@
-from re import finditer, DOTALL, MULTILINE, match
-from src.parameters import parameters as par
-from sys import maxsize
 import math
+from re import finditer, DOTALL, MULTILINE, match
+from sys import maxsize
+
+from parameters import parameters as par
+
 """
 PLEASE NOTE THE CODE IS AN EDITED VERSION OF PONYGE2's 'grammar.py' FILE I DID NOT WRITE THIS CODE
 IT HAS BEEN MODIFIED FOR USE IN MY LIBRARY. 

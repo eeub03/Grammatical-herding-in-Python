@@ -36,7 +36,8 @@ def evaluate_herd(individuals):
 
     # Number of invalids
     invalids = 0
-
+    # Reset Alpha average fitness for current generation
+    stats['herd_movement'] = 0
     total_herd_fitness = 0
 
     if stats['generation'] != 0:
@@ -65,14 +66,14 @@ def evaluate_herd(individuals):
 
             # We move low fitness individuals to an Alpha's position.
             # Note: we do not calculate its fitness, we only make it aware of the best position of the herd
-            if ind.best_fitness <= stats['herd_movement']:
+            if ind.best_fitness <= stats['alphas_fitness'][stats['generation' ] - 1]:
                 random_alpha = set_beta(alphas)
                 alpha = alphas[random_alpha]
                 ind.best_genotype_int = alpha.best_genotype_int
+                ind.invalid = False
 
         # Add the members fitness to the total fitness
         total_fitness += ind.best_fitness
-        # Add the member to the herd
         # Add the member to the herd
         fitness_herd.append([i, ind.best_fitness])
 
@@ -110,12 +111,15 @@ def evaluate_herd(individuals):
                 # Adds the herd member to the
                 betas[i] = individuals[sorted_herd[i][0]]
                 # This stat is checked to move low fitness members towards an alpha's position
-                stats['herd_movement'] += betas[i].best_fitness
+
                 if i < params['NUMBER_OF_ALPHAS']:
                     alpha = individuals[sorted_herd[i][0]]
-
+                    stats['herd_movement'] += betas[i].best_fitness
                     alphas[i] = alpha
-        print(alphas)
+
+        # Set average alpha fitness for weak herd members
+        stats['alphas_fitness'].append((stats['herd_movement']) / params['NUMBER_OF_ALPHAS'])
+
         best_member = None
         best_fitness = None
 
@@ -132,55 +136,55 @@ def evaluate_herd(individuals):
         # here we check each valid individuals fitness and use the betas to move them closer to higher areas of fitness
         for n in range(len(individuals)):
             sorted_ind = individuals[n]
-            if n > params['NUMBER_OF_BETAS']:
-                total_herd_fitness += sorted_ind.best_fitness
-            rand_beta_index = set_beta(betas)
-            random_beta = betas[rand_beta_index]
+            if sorted_ind.invalid == False:
+                if n > params['NUMBER_OF_BETAS']:
+                    total_herd_fitness += sorted_ind.best_fitness
+                rand_beta_index = set_beta(betas)
+                random_beta = betas[rand_beta_index]
 
-            beta = random_beta
+                beta = random_beta
 
-            # CALCULATION FOR NEW FITNESS OF HERD MEMBER, using a random beta
+                # CALCULATION FOR NEW FITNESS OF HERD MEMBER, using a random beta
 
-            new_position = []
-            for i in range(sorted_ind.no_of_codons):
-                # Best position of beta
+                new_position = []
+                for i in range(sorted_ind.no_of_codons):
+                    # Best position of beta
+                    target_position = beta.best_genotype_int[i]
+                    # Best position of current herd member
+                    current_position = sorted_ind.best_genotype_int[i]
+                    # If target_position coordinate is greater
+                    if target_position > current_position:
+                        range_p = target_position - current_position
+                        new_position.append(
+                            target_position - np.random.randint(range_p, dtype="uint64") + np.random.randint(0, range_p,
+                                                                                                             dtype="uint64"),
+                        )
+                    # If current_position coordinate is greater
+                    elif current_position > target_position:
+                        range_p = current_position - target_position
+                        new_position.append(
+                            current_position - np.random.randint(range_p, dtype="uint64") + np.random.randint(range_p,
+                                                                                                              dtype="uint64")
+                        )
+                    # If they are equal, we have an alpha who needs to wander the search space
+                    elif current_position == target_position:
+                        wander = params['WANDER']
+                        new_position.append(
+                            current_position + np.random.randint(wander, dtype="uint64") - np.random.randint(wander,
+                                                                                                             dtype="uint64")
+                        )
 
-                target_position = beta.best_genotype_int[i]
-                # Best position of current herd member
-                current_position = sorted_ind.best_genotype_int[i]
-                # If target_position coordinate is greater
-                if target_position > current_position:
-                    range_p = target_position - current_position
-                    new_position.append(
-                        target_position - np.random.randint(range_p, dtype="uint64") + np.random.randint(0, range_p,
-                                                                                                         dtype="uint64"),
-                    )
-                # If current_position coordinate is greater
-                elif current_position > target_position:
-                    range_p = current_position - target_position
-                    new_position.append(
-                        current_position - np.random.randint(range_p, dtype="uint64") + np.random.randint(range_p,
-                                                                                                          dtype="uint64")
-                    )
-                # If they are equal, we have an alpha who needs to wander the search space
-                elif current_position == target_position:
-                    wander = params['WANDER']
-                    new_position.append(
-                        current_position + np.random.randint(wander, dtype="uint64") - np.random.randint(wander,
-                                                                                                         dtype="uint64")
-                    )
-
-            # Check if solution has been found and if so we don't need to map a new genotype
-            key = get_geno_key(None, new_position)
-            if key in geno_int_cache:
-                sorted_ind.genotype_int = new_position
-                sorted_ind.phenotype = geno_int_cache[key]
-                sorted_ind.fitness = pheno_cache[sorted_ind.phenotype]
-            else:
-                # Else we need to map the new position
-                results = eval_or_append(sorted_ind, results, pool, new_position)
-            if params['MULTICORE'] == False:
-                individuals[n] = sorted_ind
+                # Check if solution has been found and if so we don't need to map a new genotype
+                key = get_geno_key(None, new_position)
+                if key in geno_int_cache:
+                    sorted_ind.genotype_int = new_position
+                    sorted_ind.phenotype = geno_int_cache[key]
+                    sorted_ind.fitness = pheno_cache[sorted_ind.phenotype]
+                else:
+                    # Else we need to map the new position
+                    results = eval_or_append(sorted_ind, results, pool, new_position)
+                if params['MULTICORE'] == False:
+                    individuals[n] = sorted_ind
 
     if params['MULTICORE']:
         for result in results:

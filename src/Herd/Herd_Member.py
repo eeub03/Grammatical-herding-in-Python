@@ -1,10 +1,10 @@
 import importlib
-
-import src.mapping.Genotype as gt
-import src.mapping.Mapper as mp
-from src.mapping.Key_Gen import get_geno_key
-from src.parameters.parameters import params
 from stats.statistics import geno_int_cache, pheno_cache
+
+import mapping.Genotype as gt
+import mapping.Mapper as mp
+from mapping.Key_Gen import get_geno_key
+from parameters.parameters import params
 
 
 class Herd_Member:
@@ -33,17 +33,16 @@ class Herd_Member:
         self.fitnessPath = params['FITNESS_FUNCTION']
         self.phenotype = None  # Tree mapped by mapper
         self.genotype_int = []  # Bitstring converted into integers
-        self.best_genotype_int = [0] * self.no_of_codons  # Position in search space
+        self.best_genotype_int = []  # Position in search space
         self.nodes = None  # Nodes on tree
         self.invalid = None  # Whether individual is valid for evaluation
         self.max_depth = None  # Max depth of tree
         self.used_codons = None  # Codons used by individual
         self.fitness = 0
         self.best_phenotype = None
-
         self.best_fitness = 0 # Best fitness found by Herd Member
         self.genotype = gt.genotype() # Creates random Unique Bitstring of Herd member
-        self.steps = 0 # Steps taken by current generation
+        self.steps = 0 # Steps taken by current member
         self.best_steps = 900 # Best steps taken by best phenotype
         self.map_self() # Maps the genotype of the individual
         # Import the fitness function defined by user
@@ -62,7 +61,7 @@ class Herd_Member:
         Function that is creates an instance of the fitness function class and gets the fitness of the individual
         """
         fitness_Object = self.fitness_class()
-        self.fitness, self.steps = fitness_Object.evaluate(self)
+        self.fitness = fitness_Object.evaluate(self)
 
         pheno_cache[self.phenotype] = self.fitness
 
@@ -76,12 +75,11 @@ class Herd_Member:
         if self.invalid or self.phenotype == None:
             self.fitness = 0
         else:
-
             key = get_geno_key(self, None)
             if key in geno_int_cache and self.phenotype in pheno_cache:
                 self.fitness = pheno_cache[self.phenotype]
             else:
-                #
+                # Generate fitness for new coordinate in search space
                 self.generate_fitness()
         if params['MULTICORE']:
             return self
@@ -92,7 +90,6 @@ class Herd_Member:
         :param genotype_int: Coordinate to change the current members coordinate to
         This functions changes the current members coordinate to a given coordinate.
         """
-        self.genotype_int = genotype_int
         genotype = ""
         for i in range(self.no_of_codons):
             integer_val = format(int(genotype_int[i]), "b")

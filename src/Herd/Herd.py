@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 
-from src.Herd import Herd_Member
-import src.parameters.parameters as par # imports the py file
-from src.parameters.parameters import params # Imports the dict in the py file
-from src.fitness.evaluation import evaluate_herd
+from Herd import Herd_Member
+import parameters.parameters as par # imports the py file
+from parameters.parameters import params # Imports the dict in the py file
+from fitness.evaluation import evaluate_herd
 from stats.statistics import stats
 
 
@@ -25,6 +25,8 @@ class Herd:
         """
         Constructor for Herd Class
         """
+        # Check parameters
+        self.param_check()
         # Array of Herd members
         self.herd = []
         # Number of members to be created
@@ -40,6 +42,7 @@ class Herd:
         # Best phenotype of the best member overall
         self.best_phenotype = None
         self.target_fitness = params['TARGET_FITNESS']
+
         par.grammarFileInit()
         for i in range(0, self.herd_size):
             # Creates Herd Members and stores them into an array
@@ -96,4 +99,40 @@ class Herd:
         stats['best_steps'] = self.best_member_overall.best_steps
 
 
-
+    # Error checking the parameters so input is of the right type
+    def param_check(self):
+        if type(params['HERD_SIZE']) != int:
+            raise Exception("Paramater Error: 'HERD_SIZE' is not of type 'int'")
+        if type(params['ITERATIONS']) != int:
+            raise Exception("Paramater Error: 'ITERATIONS' is not of type 'int'")
+        if type(params['NUMBER_OF_ALPHAS']) != int:
+            raise Exception("Paramater Error: 'NUMBER_OF_ALPHAS' is not of type 'int'")
+        if type(params['NUMBER_OF_BETAS']) != int:
+            raise Exception("Paramater Error: 'NUMBER_OF_BETAS' is not of type 'int'")
+        if type(params['WANDER']) != int:
+            raise Exception("Paramater Error: 'WANDER' is not of type 'int'")
+        if type(params['NUMBER_OF_CODONS']) != int:
+            raise Exception("Paramater Error: 'NUMBER_OF_CODONS' is not of type 'int'")
+        if type(params['CODON_SIZE']) != int:
+            raise Exception("Paramater Error: 'CODON_SIZE' is not of type 'int'")
+        if type(params['GRAMMAR_FILE']) != str:
+            raise Exception("Paramater Error: 'GRAMMAR_FILE' is not of type 'str'")
+        if type(params['MAX_TREE_DEPTH']) != int and params['MAX_TREE_DEPTH'] != None:
+            raise Exception("Paramater Error: 'MAX_TREE_DEPTH is not of type 'int' or 'None'")
+        if type(params['MAX_WRAPS']) != int:
+            raise Exception("Paramater Error: 'MAX_WRAPS' is not of type 'int'")
+        if type(params['MULTICORE']) != bool:
+            raise Exception("Paramater Error: 'MULTICORE' is not of type 'bool'")
+        if type(params['FITNESS_FUNCTION']) != str:
+            raise Exception("Paramater Error: 'FITNESS_FUNCTION' is not of type 'str'")
+        if type(params['TARGET']) != str and params['TARGET'] != None:
+            raise Exception("Paramater Error: 'TARGET' is not of type 'str' or 'None'")
+        if type(params['MIN_INIT_TREE_DEPTH']) != int and params['MIN_INIT_TREE_DEPTH'] != None:
+            raise Exception("Paramater Error: 'MIN_INIT_TREE_DEPTH' is not of type 'int' or 'None'")
+        if type(params['MAX_INIT_TREE_DEPTH']) != int:
+            raise Exception("Paramater Error: 'MAX_INIT_TREE_DEPTH' is not of type 'int'")
+        if type(params['PERMUTATION_RAMPS']) != int:
+            raise Exception("Paramater Error: 'PERMUTATION_RAMPS' is not of type 'int'")
+        if 'MAX_STEPS' in params:
+            if type(params['MAX_STEPS']) != int:
+                raise Exception("Paramater Error: 'MAX_STEPS' is not of type 'int'")

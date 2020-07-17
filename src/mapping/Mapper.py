@@ -4,9 +4,9 @@ import numpy as np
 # PONYGE's tree file. We use the Grammar File in our Parameters .py file.
 from PGEGrammar import tree as tr
 # Parameters for tree construction
-from src.parameters.parameters import params
+from parameters.parameters import params
 # If BNF is pyBNF we need to convert the grammar to python code with proper indentation
-from src.python_filter import python_filter
+from stats.python_filter import python_filter
 
 """
 NOT MY CODE PONYGE'S 

@@ -1,6 +1,7 @@
 import json
 from datetime import datetime
-
+from parameters.parameters import params
+import os
 """
  Attributes:
      generation (int): The current generation of the run
@@ -20,13 +21,12 @@ stats = {
     "best_fitness_list": [],
     "number_of_invalids" : [],
     "best_fitness" : 0,
-    "best_iteration_fitness": 0,
     "last_gen_improvement" : 0,
     "best_phenotype" : "",
     "best_steps" : 0,
     "average_fitness": [],
     "herd_movement": 0,
-
+    "alphas_fitness" : []
 }
 geno_int_cache = {}
 pheno_cache = {}
@@ -34,5 +34,13 @@ pheno_cache = {}
 def save():
     file_str = str(datetime.today()).replace(" ","-").replace(".","-").replace(":","-")
     filename = "stats-logs/stats-run-" + file_str + ".txt"
+    if not os.path.exists("stats-logs"):
+        os.makedirs("stats-logs")
     with open(filename, "w") as f:
+        params['BNF'] = str(params['BNF'])
+        f.write("\n\nPARAMETERS\n\n")
+        json.dump(params, f, sort_keys=False, indent= 4)
+        f.write("\n\nSTATISTICS\n\n")
         json.dump(stats, f, sort_keys=True, indent= 4)
+
+    f.close()

@@ -1,9 +1,7 @@
 from fitness.santa_fe.ant_model import *
 
-from src.parameters.parameters import  params
-
-from src.fitness.base_ff import base_ff
-
+from fitness.base_ff import base_ff
+from parameters.parameters import params
 
 
 class sft(base_ff):
@@ -41,7 +39,7 @@ class sft(base_ff):
         :return: The fitness of the evaluated individual and the steps
         """
         self.ind = ind
-        model = Ant_Model( self.ind)
+        model = Ant_Model(self.ind)
         for i in range(params['MAX_STEPS']):
             model.step()
             self.ind, self.fitness, self.steps = model.return_agent()

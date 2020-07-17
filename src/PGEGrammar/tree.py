@@ -1,4 +1,4 @@
-from src.parameters import parameters as par
+from parameters import parameters as par
 
 
 class Tree:

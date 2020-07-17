@@ -6,8 +6,8 @@ Created on Sat Oct 12 13:28:49 2019
 @name: Grammatical Herding in Python
 @version: 1.0
 """
-from src.parameters.parameters import params
 import src.Herd.Herd as Herd
+from src.parameters.parameters import params
 # Initialises Herd
 Herd1 = Herd.Herd()
 def pool_init(params_):

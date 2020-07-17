@@ -8,8 +8,11 @@ from mesa.time import RandomActivation
 def get_stats(model):
     food_eaten = [agent.food_eaten for agent in model.schedule.agents]
     #index = model.id
-    #steps = [agent.steps for agent in model.schedule.agents]
+    #
     return food_eaten
+def get_steps(model):
+    steps = [agent.steps for agent in model.schedule.agents]
+    return steps
 # Class for ant that moves in the santa fe trail
 class AntAgent(Agent):
     def __init__(self,unique_id, model, ind):
@@ -156,12 +159,13 @@ class Ant_Model(Model):
             for i in range(len(row[0]) - 1):
                 if row[0][i] == "x":
 
-                    f = Food(x * i,self)
+                    food = Food(x * i,self)
 
-                    self.grid.place_agent(f, (i,31 - j ))
+                    self.grid.place_agent(food, (i,31 - j ))
+        f.close()
         # Keeps track of the food eaten by the ant throughout the run
         self.data_collector = DataCollector(
-            model_reporters={"Stats":get_stats}
+            model_reporters={"Stats":get_stats, "Steps":get_steps}
         )
 
     def step(self):

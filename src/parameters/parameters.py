@@ -1,7 +1,6 @@
-from PGEGrammar.grammar import Grammar
+from multiprocessing import cpu_count
 from socket import gethostname
 
-from multiprocessing import cpu_count
 hostname = gethostname().split('.')
 machine_name = hostname[0]
 import os
@@ -31,19 +30,19 @@ import os
     """
 params = {
 
-    'HERD_SIZE': 700, # Herd size
-    'ITERATIONS' : 5, # Iterations/generations
+    'HERD_SIZE': 20, # Herd size
+    'ITERATIONS' :   400, # Iterations/generations
     # GRAMMATICAL HERDING PARAMETERS
     'NUMBER_OF_BETAS': 20,
     'NUMBER_OF_ALPHAS': 5,
-    'WANDER': 10,
+    'WANDER': 64,
 
-    'NUMBER_OF_CODONS' : 20,
-    'CODON_SIZE' : 8, # The size of the codon.
+    'NUMBER_OF_CODONS' : 500,
+    'CODON_SIZE' : 64, # The size of the codon.
 
     'TARGET_FITNESS' : 100,
 
-    'GRAMMAR_FILE' : "grammars/SFT2.pybnf", #BNF File path
+    'GRAMMAR_FILE' : "grammars/letter.bnf", #BNF File path
 
     'MAX_TREE_DEPTH' : None,
     'MAX_WRAPS' : 10,
@@ -52,7 +51,7 @@ params = {
 
     'SEED_INDIVIDUALS' : [],
     # Fitness_function
-    'FITNESS_FUNCTION': "sft",
+    'FITNESS_FUNCTION': "string_match",
     # INITIALISATION.
     'TARGET' : 'Hello world!',
     # Set the maximum tree depth for initialisation.
@@ -63,9 +62,8 @@ params = {
 
     # Santa Fe Trail params
     'MAX_STEPS' : 900,
-
 }
 def grammarFileInit():
-
+    from PGEGrammar.grammar import Grammar
     params['BNF'] = Grammar(os.path.join("C:/Users/Joe/Documents/3 YEAR PROJECT IMPORTANT/code/src",params['GRAMMAR_FILE']))
 
